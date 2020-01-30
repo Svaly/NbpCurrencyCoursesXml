@@ -68,7 +68,7 @@ namespace NbpCurrencyCoursesWpf
                 sb.AppendLine($"Kurs minimalny kupna {currencyCourseCalculator.CalculateBuyRatesMinValue()}");
 
                 var courseDifference = currencyCourseCalculator.CalculateMaxCurseDifference();
-                sb.AppendLine($"Największa różnica kursu wystąpiła dnia {courseDifference.Day} wynosiła {courseDifference.Difference}");
+                sb.AppendLine($"Największa różnica między kursem sprzedaży i kupna wystąpiła dnia {courseDifference.Day} wynosiła {courseDifference.Difference}");
 
                 Results.Text = sb.ToString();
             }

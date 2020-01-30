@@ -63,7 +63,7 @@ namespace XMLParse
                 Console.WriteLine($"Kurs minimalny kupna {currencyCourseCalculator.CalculateBuyRatesMinValue()}");
 
                 var courseDifference = currencyCourseCalculator.CalculateMaxCurseDifference();
-                Console.WriteLine($"Największa różnica kursu wystąpiła dnia {courseDifference.Day} wynosiła {courseDifference.Difference}");
+                Console.WriteLine($"Największa różnica między kursem sprzedaży i kupna wystąpiła dni {courseDifference.Day} wynosiła {courseDifference.Difference}");
             }
             catch (Exception e)
             {

@@ -16,6 +16,6 @@
             <ComboBoxItem>GBP</ComboBoxItem>
         </ComboBox>
         <Button x:Name="Run" Content="Start" HorizontalAlignment="Left" Margin="585,63,0,0" VerticalAlignment="Top" Height="39" Width="72" Click="Run_Click"/>
-        <TextBlock x:Name="Results" HorizontalAlignment="Center" Margin="0,204,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="172" Width="420"/>
+        <TextBlock x:Name="Results" HorizontalAlignment="Center" Margin="0,135,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="267" Width="522"/>
     </Grid>
 </Window>

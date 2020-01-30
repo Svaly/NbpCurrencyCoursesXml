@@ -8,8 +8,8 @@ namespace XMLParse
     {
         private readonly ICollection<CurrencyCourseInfoDto> _currencyCourseInfos;
 
-        private readonly ICollection<double> _buyRates;
-        private readonly ICollection<double> _sellRates;
+        private readonly ICollection<decimal> _buyRates;
+        private readonly ICollection<decimal> _sellRates;
 
         public CurrencyCourseCalculator(ICollection<CurrencyCourseInfoDto> currencyCourseInfos)
         {
@@ -19,18 +19,18 @@ namespace XMLParse
             _sellRates = currencyCourseInfos.Select(c => c.SellRate).ToArray();
         }
 
-        public double CalculateSellRatesAverage() => _sellRates.Average();
-        public double CalculateBuyRatesAverage() => _buyRates.Average();
+        public decimal CalculateSellRatesAverage() => _sellRates.Average();
+        public decimal CalculateBuyRatesAverage() => _buyRates.Average();
 
 
-        public double CalculateSellRatesMaxValue() => _sellRates.Max();
+        public decimal CalculateSellRatesMaxValue() => _sellRates.Max();
         
-        public double CalculateBuyRatesMaxValue() => _buyRates.Max();
+        public decimal CalculateBuyRatesMaxValue() => _buyRates.Max();
 
 
-        public double CalculateSellRatesMinValue() => _sellRates.Min();
+        public decimal CalculateSellRatesMinValue() => _sellRates.Min();
         
-        public double CalculateBuyRatesMinValue() => _buyRates.Min();
+        public decimal CalculateBuyRatesMinValue() => _buyRates.Min();
 
 
         public double CalculateSellRatesStandardDeviation() => CalculateStandardDeviation(_sellRates);
@@ -47,18 +47,18 @@ namespace XMLParse
                   Difference = c.BuyRate - c.SellRate,
                   Day = c.Day
               })
-              .FirstOrDefault(x => Math.Abs(x.Difference - maxCurseDifference) < 0.000000001);
+              .FirstOrDefault(x => x.Difference == maxCurseDifference);
 
             return maxCurseDifferenceWithDay;
         }
 
-        private static double CalculateStandardDeviation(IEnumerable<double> values)
+        private static double CalculateStandardDeviation(IEnumerable<decimal> values)
         {
             double ret = 0;
             if (values.Count() > 0)
             {
-                double avg = values.Average();
-                double sum = values.Sum(d => Math.Pow(d - avg, 2));
+                double avg = decimal.ToDouble(values.Average()) ;
+                double sum = values.Sum(d => Math.Pow(decimal.ToDouble(d) - avg, 2));
                 ret = Math.Sqrt((sum) / (values.Count() - 1));
             }
             return ret;

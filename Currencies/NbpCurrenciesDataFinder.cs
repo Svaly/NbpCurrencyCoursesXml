@@ -70,8 +70,8 @@ namespace XMLParse
                   new CurrencyCourseInfoDto
                   {
                       CurrencyCode = xmlCurrencyPosition.Element(NbpCurrencyXmlNodes.CurrencyCode).Value,
-                      SellRate = Convert.ToDouble(xmlCurrencyPosition.Element(NbpCurrencyXmlNodes.SellRate).Value),
-                      BuyRate = Convert.ToDouble(xmlCurrencyPosition.Element(NbpCurrencyXmlNodes.BuyRate).Value),
+                      SellRate = Convert.ToDecimal(xmlCurrencyPosition.Element(NbpCurrencyXmlNodes.SellRate).Value),
+                      BuyRate = Convert.ToDecimal(xmlCurrencyPosition.Element(NbpCurrencyXmlNodes.BuyRate).Value),
                       Day = day
                   })
               .SingleOrDefault(c => c.CurrencyCode == currencyCode);
